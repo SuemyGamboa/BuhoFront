@@ -118,7 +118,7 @@ const WelcomeScreen = () => {
                 alt="Mascota Estrella sonriente y amigable"
                 className={`mascot-avatar ${isMascotBouncing ? 'animate-bounce' : ''}`}
                 id="mascot-avatar"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwzJVNzeHvFNvvM0CiEx1lhJV-snEp55z2tG0DQ5TD3nyuArINXr1ciDa-iilEURIZnxWu1RGPD_reaULq8rNR-8D3vS46yz7BauNFjnUa6CwZr4mqb6OgubM9N2Qm3bfe3wONnu_e6P5mYcdeDv77SMf-v_EgqMbW7rPi79SzJqz83sU3UPVZBS0XDXfXdx44GYPO81Lk3WubHx_O0TCVaP9i-fbRBspny-tNtF1EyUjwLXmtIwh1"
+                src="/Buhoavatarpng.png"
                 onClick={handleMascotClick}
               />
             </div>

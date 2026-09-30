@@ -263,7 +263,7 @@ function GameContentField({
         <img alt={`Vista previa: ${label}`} className="admin-game-content-preview" src={value} />
       )}
       {isImage && value?.startsWith('/storage/') && (
-        <img alt={`Vista previa: ${label}`} className="admin-game-content-preview" src={value} />
+        <img alt={`Vista previa: ${label}`} className="admin-game-content-preview" src={`${API_URL}${value}`} />
       )}
       {uploadError && <span className="admin-field-error" role="alert">{uploadError}</span>}
     </label>
@@ -285,12 +285,14 @@ const gameTypeGuidance = {
 };
 
 
+const API_URL = import.meta.env.VITE_API_URL || '';
+
 async function apiRequest(path, {
   csrfToken,
   onCsrfToken,
   ...options
 } = {}) {
-  const sendRequest = (token) => fetch(`/api${path}`, {
+  const sendRequest = (token) => fetch(`${API_URL}/api${path}`, {
     credentials: 'include',
     ...options,
     headers: {
@@ -306,7 +308,7 @@ async function apiRequest(path, {
   let response = await sendRequest(csrfToken);
 
   if (response.status === 419 && options.method && options.method !== 'GET') {
-    const refreshResponse = await fetch('/api/csrf-token', {
+    const refreshResponse = await fetch(`${API_URL}/api/csrf-token`, {
       credentials: 'include',
       cache: 'no-store',
       headers: { Accept: 'application/json' },
@@ -856,7 +858,7 @@ function AdminPanel() {
       <header className="admin-header">
         <Link className="admin-brand" to="/">
           <span className="admin-brand-mark" aria-hidden="true">🦉</span>
-          <span><strong>ChikiAprende</strong><small>Zona de Papás</small></span>
+          <span><strong>Buho - Kids learning</strong><small>Zona de Papás</small></span>
         </Link>
         <div className="admin-header-actions">
           <span className="admin-secure-label">
